@@ -1,6 +1,20 @@
 # 📈 Academic Intervention Strategy: Closing the Socioeconomic Achievement Gap
 
-## Data Transformations (Feature Engineering)
+## Project Overview
+
+This Power BI project provides a clear, data-driven strategy to maximize the Return on Investment (ROI) of an academic intervention program. The goal was to identify the root cause of a significant performance disparity and recommend a targeted resource allocation plan.
+
+The final deliverable is an interactive dashboard that moves beyond simple reporting to deliver a single, clear strategic imperative for school administration.
+
+---
+
+## 📁 Dataset Origin
+
+The dataset used for this analysis is **synthetic** and designed for educational use only. It is a publicly available dataset sourced from Kaggle/various educational resources. This project focuses solely on demonstrating **data modeling**, **transformation**, and **strategic analysis** techniques.
+
+---
+
+## 🔬 Data Transformations (Feature Engineering)
 
 The initial dataset was highly clean, so the primary focus was on **Feature Engineering** to create more analytically powerful binary variables for the dashboard and statistical modeling.
 
@@ -12,11 +26,10 @@ The initial dataset was highly clean, so the primary focus was on **Feature Engi
 | `parental level of education` | **`Parent_Post_Secondary_Education`** | Grouped original text values into a binary indicator. | **1 = Parent has a degree (Associate's or higher); 0 = Parent has not completed a degree.** Simplifies the impact analysis of parental education. |
 | Math, Reading, Writing Scores | **`Average_Score`** | Calculated mean of the three subjects and rounded to 2 decimals. | Serves as the **central numerical metric** for overall student performance. |
 | `Average_Score` | **`Performance_Segment`** | Conditional logic applied in Power Query based on grade cutoffs. | **Categorizes students into High ($\geq 80$), Medium ($60-79$), or Needs Intervention ($< 60$).** Key dimension for intervention targeting. |
-| `race/ethnicity` | **(Direct Use as Category)** | N/A | Used directly as a **Categorical Dimension** to analyze **academic performance disparities** between the five anonymized groups (A-E). |
 
 ---
 
-## 🛠️ Key DAX Measures & Gap Analysis
+## 📐 Key DAX Measures & Gap Analysis
 
 The following calculated measures were engineered in DAX to serve as the core metrics and gap analyses presented on the dashboard. They quantify the problem and the efficacy of the proposed solution.
 
@@ -29,7 +42,7 @@ The following calculated measures were engineered in DAX to serve as the core me
 | **`_TestPrepLift`** | Quantifies the score improvement attributed to the Test Prep course in the target group. **(The 7.63 point lift)** | `CALCULATE( [Average_Score], 'Intervention'[Test_Prep_Completed] = 1, 'Demographics'[Lunch_Standard_Indicator] = 0 ) - CALCULATE( [Average_Score], 'Intervention'[Test_Prep_Completed] = 0, 'Demographics'[Lunch_Standard_Indicator] = 0 )` |
 | **`_GenderGap`** | Measures the score difference between Female and Male students. | `ABS([Avg Score Female] - [Avg Score Male])` |
 
-***
+---
 
 ### Project Status
 **COMPLETED:** Ready for portfolio presentation.
